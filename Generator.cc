@@ -4,6 +4,7 @@
 
 #include "Generator.h"
 
+
 Generator* createFacebookKey() { return new GEV(30.7984, 8.20449, 0.078688); }
 
 Generator* createFacebookValue() {
@@ -55,9 +56,20 @@ Generator* createGenerator(std::string str) {
   char t = t_ptr[0];
 
   saveptr = NULL;
-  char *s1 = strtok_r(a_ptr, ",", &saveptr);
-  char *s2 = strtok_r(NULL, ",", &saveptr);
-  char *s3 = strtok_r(NULL, ",", &saveptr);
+  
+  printf("s_copy %s\n",s_copy);
+  printf("a_ptr %s -- t_ptr %s -- t: %c\n", a_ptr, t_ptr, t);
+ 
+  char* s1=NULL;
+  char* s2=NULL;
+  char* s3=NULL;
+
+  if (a_ptr!=NULL){
+    printf("CAME HERE");
+    s1 = strtok_r(a_ptr, ",", &saveptr);
+    s2 = strtok_r(NULL, ",", &saveptr);
+    s3 = strtok_r(NULL, ",", &saveptr);
+  }
 
   double a1 = s1 ? atof(s1) : 0.0;
   double a2 = s2 ? atof(s2) : 0.0;

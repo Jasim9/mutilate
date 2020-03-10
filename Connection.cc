@@ -19,15 +19,16 @@
 /**
  * Create a new connection to a server endpoint.
  */
-Connection::Connection(struct event_base* _base, struct evdns_base* _evdns,
-                       string _hostname, string _port, options_t _options,
-                       bool sampling) :
+Connection::Connection(struct event_base* _base, struct evdns_base* _evdns, string _hostname, string _port, options_t _options, bool sampling) :
   start_time(0), stats(sampling), options(_options),
   hostname(_hostname), port(_port), base(_base), evdns(_evdns)
 {
   valuesize = createGenerator(options.valuesize);
   keysize = createGenerator(options.keysize);
   keygen = new KeyGenerator(keysize, options.records);
+
+  printf("IATDIST: -- %s\n",options.ia);
+  printf("Lambda: -- %f\n",options.lambda);
 
   if (options.lambda <= 0) {
     iagen = createGenerator("0");
