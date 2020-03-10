@@ -27,8 +27,8 @@ Connection::Connection(struct event_base* _base, struct evdns_base* _evdns, stri
   keysize = createGenerator(options.keysize);
   keygen = new KeyGenerator(keysize, options.records);
 
-  printf("IATDIST: -- %s\n",options.ia);
-  printf("Lambda: -- %f\n",options.lambda);
+  D("IATDIST: -- %s",options.ia);
+  D("Lambda: -- %f",options.lambda);
 
   if (options.lambda <= 0) {
     iagen = createGenerator("0");
